@@ -1,0 +1,116 @@
+/* Указываем box sizing */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* Убираем внутренние отступы */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Убираем внешние отступы */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Выставляем основные настройки по-умолчанию для body */
+body {
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+}
+
+/* Удаляем стандартную стилизацию для всех ul и il, у которых есть атрибут class*/
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* Элементы a, у которых нет класса, сбрасываем до дефолтных стилей */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Упрощаем работу с изображениями */
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Указываем понятную периодичность в потоке данных у article*/
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Наследуем шрифты для инпутов и кнопок */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+.head {
+  display: flex;
+  justify-content:space-between;
+  background-color: #99ff99;
+  color: black;
+  width: all;
+  font-size: 50px;
+  border-bottom: 2px solid black;
+  font-family: Monospace;
+  padding: 5px 20px 5px 20px;
+}
+
+.avrora {
+  text-decoration: none;
+  color: black;
+  transition: color 0.5s 3ms;
+}
+
+.avrora:hover {
+  color: red;
+}
+
+.search {
+  background-color: white;
+  background-image: url('/static/image/search_icon.png');
+  background-position: 7px 7px;
+  background-repeat: no-repeat;
+  padding-left: 60px;
+  font-size: 30px;
+}
+
+.ok {
+  font-family: Monospace;
+	text-align: center;
+  margin: 20px;
+}
+
+.but {
+	background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+}
