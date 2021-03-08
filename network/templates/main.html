@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Avrora</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/main.css') }}">
+</head>
+
+<body>
+	<div class="head">
+		<div>
+			Avrora
+		</div>
+
+		<div>
+			<a href="/about" class="about">About</a>
+		</div>
+	</div>
+	<br>
+	<p class="nice">Пожалуйства войдите или <br> зарегистрируйтесь</p>
+	<br>
+	<div class="page">
+		<form action="/sing_in" method="get">
+			<p style="text-align: center;"><button class="but">sing in</button></p>
+		</form>
+
+		<form action="/sing_up" method="get">
+			<p style="text-align: center;"><button class="buttwo">sing up</button></p>
+		</form>
+	</div>
+	<form action="/search" method="get">
+		<p style="text-align: center;"><button class="search">search</button></p>
+	</form>
+</body>
+</html>

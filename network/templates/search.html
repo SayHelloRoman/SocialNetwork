@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>search</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/search.css') }}">
+</head> 
+
+<body>
+	<div class="head">
+		<a href="/" class="avrora">Avrora<a>
+	</div>
+	<form action="/search" method="post">
+		<p class="ok"><input class="search" type="text", name="name" required="/^[^\s].*/" pattern="[A-Za-z-0-9]{1,15}" autocomplete="off"></p>
+		<p class="ok"><button class="but">Ok</button></p>
+	</form>
+</body>
+</html>
