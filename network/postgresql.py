@@ -10,12 +10,8 @@ class DB:
 
     def search(self, name):
         cursor = self.db.cursor()
-        try:
-            cursor.execute(f"SELECT id, pasword, status FROM users WHERE id = '{name}'")
 
-        except psycopg2.errors.InFailedSqlTransaction:
-            cursor.execute("ROLLBACK")
-            cursor.execute(f"SELECT id, pasword, status FROM users WHERE id = '{name}'")
+        cursor.execute(f"SELECT id, pasword, status FROM users WHERE id = '{name}'")
 
         r = cursor.fetchall()
         cursor.close()
@@ -23,18 +19,14 @@ class DB:
 
     def update(self, nick, new_nick, status):
         cursor = self.db.cursor()
-        try:
-            cursor.execute(f"UPDATE users SET  id='{new_nick}',status='{status}' WHERE id='{nick}';")
-
-        except psycopg2.errors.InFailedSqlTransaction:
-            cursor.execute("ROLLBACK")
-            cursor.execute(f"UPDATE users SET  id='{nick}',status='{status}' WHERE id='{nick}';")
-
+        cursor.execute(f"UPDATE users SET  id='{new_nick}',status='{status}' WHERE id='{nick}';")
+        
         self.db.commit()
         cursor.close()
 
     def sing_up(self, nick, password):
         cursor = self.db.cursor()
+
         try:
             cursor.execute(f"INSERT INTO users values('{nick}', '', '{password}')")
 
@@ -42,9 +34,10 @@ class DB:
             return False
 
         except psycopg2.errors.InFailedSqlTransaction:
-            cursor.execute("ROLLBACK")
-            return False
+            cursor.rollback()
+        
+        else:
+            self.db.commit()
 
-        self.db.commit()
         cursor.close()
         return True
