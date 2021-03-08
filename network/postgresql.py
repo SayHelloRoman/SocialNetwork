@@ -20,7 +20,7 @@ class DB:
     def update(self, nick, new_nick, status):
         cursor = self.db.cursor()
         cursor.execute(f"UPDATE users SET  id='{new_nick}',status='{status}' WHERE id='{nick}';")
-        
+
         self.db.commit()
         cursor.close()
 
@@ -31,13 +31,15 @@ class DB:
             cursor.execute(f"INSERT INTO users values('{nick}', '', '{password}')")
 
         except psycopg2.errors.UniqueViolation:
+            cursor.close()
             return False
 
         except psycopg2.errors.InFailedSqlTransaction:
             cursor.rollback()
+            cursor.close()
+            return False
         
         else:
             self.db.commit()
-
-        cursor.close()
-        return True
+            cursor.close()
+            return True
