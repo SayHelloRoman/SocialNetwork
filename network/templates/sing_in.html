@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>sing up</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/sing_in_and_up.css') }}">
+    <script src="{{ url_for('static', path='/js/main.js') }}"></script>
+</head>
+
+<body>
+  <div class="head">
+    <a href="/" class="avrora">Avrora<a>
+  </div>
+  <br>
+  <br>
+  <br>
+  <form action="/sing_in" method="post" onsubmit="document.cookie = 'userID='+document.getElementById('nick').value+','+document.getElementById('password').value+'; path=/'">
+    <p class="ok"><input class="in" name="nick" id="nick" placeholder="Nickname" required="/^[^\s].*/" pattern="[A-Za-z-0-9]{1,15}"></p>
+    <p class="ok"><input class="in" name="password" id="password" placeholder="Password" type="password" required="/^[^\s].*/" pattern="[A-Za-z-0-9]{8,20}"></p>
+    <p class="ok"><button class="b">Sing in</button></p>
+  </form>
+  <script type="text/javascript">
+    if ({{ status|safe }}==1){
+      alert("{{ message|safe }}");
+    }
+  </script>
+</body>
+</html>
