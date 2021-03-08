@@ -3,9 +3,9 @@ import json
 
 
 with open("data.json") as file:
-	db = psycopg2.connect(
-		**json.load(file)
-	)
+    db = psycopg2.connect(
+        **json.load(file)
+    )
 
 cursor = db.cursor()
 cursor.execute("""
