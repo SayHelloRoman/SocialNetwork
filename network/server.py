@@ -91,9 +91,8 @@ async def user(request: Request, nick: str, userID: Optional[str] = Cookie(None)
     if us[0][1] == cook[1] and us[0][0] == cook[0]:
         return templates.TemplateResponse("my_profile.html", {"request": request, "name": nick, "status": us[0][2]})
 
-    else:
-        return templates.TemplateResponse("no_my_proifle.html",
-                                          {"request": request, "name": nick, "status": us[0][2]})
+    return templates.TemplateResponse("no_my_proifle.html",
+                                        {"request": request, "name": nick, "status": us[0][2]})
 
 
 @app.get("/edit/{nick}")
